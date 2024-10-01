@@ -1,0 +1,1130 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap');
+
+@import "./swiper.css";
+@import "./toastify.css";
+@import "./pagination.css";
+@import "./roundslider.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+}
+
+@layer components {
+    .container {
+        @apply lg:max-w-[76rem] md:max-w-[68rem] sm:max-w-[26rem] lg:px-2 md:px-10 sm:px-4 self-center;
+    }
+}
+
+/* Header (Start) */
+#desktop-header {
+    @apply bg-black transition duration-300 ease-in-out
+}
+
+#desktop-header.active {
+    @apply backdrop-blur-md bg-black bg-opacity-50 transition duration-300 ease-in-out
+}
+
+#desktop-header.active {
+    @apply shadow-lg
+}
+
+.header-logo {
+    @apply lg:h-[100px] md:h-[100px] sm:h-[70px] w-auto
+}
+
+.header-nav-list .nav-item {
+    @apply text-base font-medium flex items-center space-x-2 text-gray-100 hover:text-web-ascent-2 transition duration-300 ease-in-out hover:ease-in-out
+}
+
+.header-nav-list .nav-item svg {
+    @apply h-5 w-5 stroke-[3px]
+}
+
+.header-nav-list {
+    @apply flex items-start gap-5
+}
+
+.header-nav-list li.divider {
+    @apply font-medium text-lg text-gray-200
+}
+
+.header-nav-list>li {
+    @apply py-2
+}
+
+.header-nav-list .dropdown {
+    @apply relative w-fit
+}
+
+.header-nav-list .dropdown .dropdown-content {
+    @apply hidden absolute top-full left-0 shadow-lg py-3 border space-y-2 bg-white
+}
+
+.header-nav-list .dropdown .dropdown-content .dropdown-item {
+    @apply py-2 px-5 font-medium text-sm text-gray-700 hover:text-web-ascent-2 transition duration-300 ease-in-out hover:ease-in-out whitespace-nowrap
+}
+
+.header-nav-list .dropdown:hover .dropdown-content {
+    @apply block
+}
+
+.header-nav-list .dropdown:hover .nav-item {
+    @apply text-web-ascent-2 transition duration-300 ease-in-out
+}
+
+.header-nav-list .dropdown .nav-item svg {
+    @apply rotate-0 transition duration-300 ease-in-out
+}
+
+.header-nav-list .dropdown:hover .nav-item svg {
+    @apply rotate-180 transition duration-300 ease-in-out
+}
+
+.header-nav-list .nav-btn {
+    @apply pt-2 pb-2.5 px-5 shadow-lg font-medium text-base bg-white text-web-ascent-1 hover:bg-web-ascent-1 hover:text-white
+}
+
+.mobile-header-nav-list {
+    @apply ml-auto flex flex-col items-end space-y-3
+}
+
+.mobile-header-nav-list .mobile-nav-item {
+    @apply font-medium text-lg text-web-ascent-2 hover:text-web-ascent-1 transition duration-300 ease-in-out hover:ease-in-out
+}
+
+/* Header (End) */
+
+/* Buttons (Start) */
+.btn-primary-md {
+    @apply bg-web-ascent-1 px-5 py-3 font-medium text-sm rounded-md text-white hover:bg-web-ascent-1-dark transition duration-300 ease-in-out hover:ease-in-out
+}
+
+.btn-primary-sm {
+    @apply bg-web-ascent-1 px-5 py-2 font-medium text-sm rounded-md text-white hover:bg-web-ascent-1-dark transition duration-300 ease-in-out hover:ease-in-out
+}
+
+.btn-secondary-md {
+    @apply bg-web-ascent-1 bg-opacity-20 px-5 py-3 font-medium text-sm rounded-md text-web-ascent-1-dark hover:bg-web-ascent-1-dark hover:text-white transition duration-300 ease-in-out hover:ease-in-out
+}
+
+/* Buttons (End) */
+
+/* Inputs (Start) */
+.input-group {
+    @apply flex flex-col
+}
+
+.input-box-sm {
+    @apply px-3 py-2.5 border rounded-sm text-xs outline-web-ascent-1 border-gray-800 font-medium bg-white
+}
+
+.input-box-md {
+    @apply px-4 py-3 border rounded-md text-sm outline-web-ascent-1 border-gray-800 font-medium bg-white
+}
+
+.input-box-lg {
+    @apply px-5 py-3.5 border rounded-lg text-base outline-web-ascent-1 border-gray-800 font-medium bg-white
+}
+
+.input-box-sm.input-invalid,
+.input-box-md.input-invalid,
+.input-box-lg.input-invalid {
+    @apply border-red-600
+}
+
+.input-label {
+    @apply text-sm font-medium text-slate-800 mb-2 text-left
+}
+
+.input-error {
+    @apply text-xs font-medium text-red-600 mt-2 text-left
+}
+
+.input-box-sm.tagify,
+.input-box-md.tagify,
+.input-box-lg.tagify {
+    @apply p-[0.3rem]
+}
+
+.tagify.tagify--focus {
+    @apply ring-[1.5px] ring-web-ascent-1
+}
+
+.input-radio {
+    @apply flex items-center space-x-1.5
+}
+
+.input-radio input[type=radio] {
+    @apply w-4 h-4 text-web-ascent-1 cursor-pointer
+}
+
+input[type=file] {
+    @apply pt-[0.58rem] pb-[0.58rem]
+}
+
+.input-radio label {
+    @apply font-medium text-slate-800 text-xs cursor-pointer
+}
+
+input:not(.peer)[type=checkbox] {
+    @apply appearance-none h-4 w-4 border border-gray-200 rounded bg-white checked:border-web-ascent-1 checked:bg-web-ascent-1 focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer text-white
+}
+
+input:not(.peer)[type=checkbox]:checked {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+}
+
+input:read-only {
+    @apply outline-none cursor-default
+}
+
+.input-box-dragable {
+    @apply relative h-[200px] flex flex-col space-y-3 justify-center items-center w-full border border-slate-300 border-dashed rounded-lg text-slate-600 font-medium text-xs
+}
+
+.input-box-dragable input {
+    @apply absolute h-[200px] w-full cursor-pointer opacity-0
+}
+
+.input-thumbnail-preview {
+    @apply h-[200px] w-max rounded-lg border-slate-200 border
+}
+
+.input-label em {
+    @apply text-red-500 font-medium text-xs not-italic
+}
+
+.input-label span {
+    @apply text-gray-500 font-medium text-xs
+}
+
+input[type='date'].input-box-md {
+    padding-top: 0.7rem !important;
+    padding-bottom: 0.7rem !important;
+}
+
+select.input-box-md {
+    appearance: none;
+    background: white;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16px' height='16px' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6.1018 8C5.02785 8 4.45387 9.2649 5.16108 10.0731L10.6829 16.3838C11.3801 17.1806 12.6197 17.1806 13.3169 16.3838L18.8388 10.0731C19.5459 9.2649 18.972 8 17.898 8H6.1018Z' fill='%23212121'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+}
+
+.toggler-switch {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 20px;
+}
+
+.toggler-switch>input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+input:checked+.slider {
+    @apply bg-web-ascent-1
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+}
+
+.slider {
+    border-radius: 12px;
+}
+
+.slider:before {
+    border-radius: 9px;
+}
+
+/* Inputs (End) */
+
+/* Footer (Start) */
+.footer-link {
+    @apply lg:text-base md:text-sm sm:text-base font-medium hover:text-web-ascent-1 transition duration-300 ease-in-out hover:ease-in-out
+}
+
+.social-media-icons {
+    @apply flex items-start lg:justify-center md:justify-center sm:justify-start space-x-3
+}
+
+.social-media-icons a {
+    @apply h-9 w-9 rounded-full flex items-center justify-center transition duration-300 ease-in-out hover:ease-in-out
+}
+
+.social-media-icons a img {
+    @apply h-5 w-5
+}
+
+/* Footer (End) */
+
+/* Sweet Alerts (Start) */
+.swal-modal {
+    @apply rounded-md shadow-lg border
+}
+
+.swal-title {
+    @apply text-2xl text-black font-semibold
+}
+
+.swal-text {
+    @apply text-xs text-slate-600 text-center
+}
+
+.swal-button:focus {
+    @apply shadow-none border-none outline-none
+}
+
+.swal-button.swal-button--confirm {
+    @apply btn-primary-md
+}
+
+.swal-button.swal-button--cancel {
+    @apply btn-secondary-md
+}
+
+.swal-icon--success__line {
+    @apply bg-green-500
+}
+
+.swal-icon--success__ring {
+    @apply border-[#4bc10678]
+}
+
+.swal-footer {
+    @apply mb-5 text-center
+}
+
+/* Sweet Alerts (End) */
+
+/* cloud */
+.embrace:hover {
+    box-shadow: 1px 1px 6px grey;
+}
+
+.embrace:hover img {
+    animation: Shake 0.5s linear infinite;
+}
+
+@keyframes Shake {
+    0% {
+        transform: rotate(5deg);
+    }
+
+    25% {
+        transform: rotate(-6deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+
+    75% {
+        transform: rotate(-6deg);
+    }
+
+    100% {
+        transform: rotate(5deg);
+    }
+}
+
+.icon-shadow {
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+        rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+        rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+        rgba(0, 0, 0, 0.06) 0px 2px 1px,
+        rgba(0, 0, 0, 0.09) 0px 4px 2px,
+        rgba(0, 0, 0, 0.09) 0px 8px 4px,
+        rgba(0, 0, 0, 0.09) 0px 16px 8px,
+        rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.offerings .swiper-pagination-bullet-active {
+    background-color: #223f97 !important;
+    opacity: 1 !important;
+    width: 10px !important;
+    height: 10px !important;
+}
+
+.offerings .swiper-pagination-bullet {
+    background-color: grey;
+    opacity: 1;
+}
+
+.key .swiper-pagination-bullet-active {
+    background-color: #223f97 !important;
+}
+
+.offerings .swiper-slide {
+    transform: scale(0.8, 0.8);
+    transition: all 0.4s ease-in-out;
+}
+
+.offerings .swiper-slide .icon-shadow {
+    background-color: grey;
+}
+
+.offerings .swiper-slide-active {
+    transform: scale(1.1);
+}
+
+
+.offerings .swiper-slide-active .icon-shadow {
+    background-color: #223f97;
+    animation: Shake 0.5s linear infinite;
+}
+
+.offerings .swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    bottom: 5px;
+}
+
+.tabs-btns .active,
+.tabs-btns-2 .active {
+    background-color: #223f97;
+    position: relative;
+    z-index: 3;
+}
+
+.tabs-btns .active:before,
+.tabs-btns .active:after,
+.tabs-btns-2 .active:before,
+.tabs-btns-2 .active:after {
+    background-color: #223f97;
+    z-index: 1111;
+}
+
+.private-cloud-dots {
+    @apply top-0
+}
+
+
+.dots .swiper-pagination-bullet-active {
+    background-color: #223f97 !important;
+    opacity: 1 !important;
+    width: 10px !important;
+    height: 10px !important;
+}
+
+.dots .swiper-pagination-bullet {
+    background-color: grey;
+    opacity: 1;
+}
+
+.counter {
+    animation-duration: 1s;
+    animation-delay: 0s;
+}
+
+.arrow-ico::after {
+    position: absolute;
+    content: "";
+    border: solid #2b2828cc;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    right: 12px;
+    top: 10px;
+    transition: .5s;
+    transform: rotate(45deg);
+}
+
+.network-tab {
+    @apply bg-[gray] py-1 px-3 text-white font-semibold rounded-tl-xl rounded-tr-xl relative after:content-['_'] after:absolute after:bg-[gray] hover:after:bg-web-ascent-1 after:h-full after:w-5 after:bottom-0 after:-left-3 after:-skew-x-[22deg] after:skew-y-0 after:rounded-tl-xl before:content-['_'] before:absolute before:bg-[gray] hover:before:bg-web-ascent-1 before:h-full before:w-5 before:bottom-0 before:-right-3 before:skew-x-[22deg] before:skew-y-0 before:rounded-tr-xl hover:bg-web-ascent-1 cursor-pointer
+}
+
+.network-tab.active {
+    @apply bg-[#223f97] py-1 px-3 text-white font-semibold rounded-tl-xl rounded-tr-xl relative after:content-['_'] after:absolute after:bg-web-ascent-1 hover:after:bg-web-ascent-1 after:h-full after:w-5 after:bottom-0 after:-left-3 after:-skew-x-[22deg] after:skew-y-0 after:rounded-tl-xl before:content-['_'] before:absolute before:bg-web-ascent-1 hover:before:bg-web-ascent-1 before:h-full before:w-5 before:bottom-0 before:-right-3 before:skew-x-[22deg] before:skew-y-0 before:rounded-tr-xl hover:bg-web-ascent-1
+}
+
+.storage-tab {
+    @apply bg-[gray] py-1 px-3 text-white font-semibold rounded-tl-xl rounded-tr-xl relative after:content-['_'] after:absolute after:bg-[gray] hover:after:bg-web-ascent-1 after:h-full after:w-5 after:bottom-0 after:-left-3 after:-skew-x-[22deg] after:skew-y-0 after:rounded-tl-xl before:content-['_'] before:absolute before:bg-[gray] hover:before:bg-web-ascent-1 before:h-full before:w-5 before:bottom-0 before:-right-3 before:skew-x-[22deg] before:skew-y-0 before:rounded-tr-xl hover:bg-web-ascent-1 cursor-pointer
+}
+
+.storage-tab.active {
+    @apply bg-[#223f97] py-1 px-3 text-white font-semibold rounded-tl-xl rounded-tr-xl relative after:content-['_'] after:absolute after:bg-web-ascent-1 hover:after:bg-web-ascent-1 after:h-full after:w-5 after:bottom-0 after:-left-3 after:-skew-x-[22deg] after:skew-y-0 after:rounded-tl-xl before:content-['_'] before:absolute before:bg-web-ascent-1 hover:before:bg-web-ascent-1 before:h-full before:w-5 before:bottom-0 before:-right-3 before:skew-x-[22deg] before:skew-y-0 before:rounded-tr-xl hover:bg-web-ascent-1
+}
+
+.cyber-security-tab {
+    @apply bg-[gray] py-1 px-3 text-white font-semibold rounded-tl-xl rounded-tr-xl relative after:content-['_'] after:absolute after:bg-[gray] hover:after:bg-web-ascent-1 after:h-full after:w-5 after:bottom-0 after:-left-3 after:-skew-x-[22deg] after:skew-y-0 after:rounded-tl-xl before:content-['_'] before:absolute before:bg-[gray] hover:before:bg-web-ascent-1 before:h-full before:w-5 before:bottom-0 before:-right-3 before:skew-x-[22deg] before:skew-y-0 before:rounded-tr-xl hover:bg-web-ascent-1 cursor-pointer
+}
+
+.cyber-security-tab.active {
+    @apply bg-[#223f97] py-1 px-3 text-white font-semibold rounded-tl-xl rounded-tr-xl relative after:content-['_'] after:absolute after:bg-web-ascent-1 hover:after:bg-web-ascent-1 after:h-full after:w-5 after:bottom-0 after:-left-3 after:-skew-x-[22deg] after:skew-y-0 after:rounded-tl-xl before:content-['_'] before:absolute before:bg-web-ascent-1 hover:before:bg-web-ascent-1 before:h-full before:w-5 before:bottom-0 before:-right-3 before:skew-x-[22deg] before:skew-y-0 before:rounded-tr-xl hover:bg-web-ascent-1
+}
+
+.business-continuity-tab {
+    @apply bg-[gray] py-1 px-3 text-white font-semibold rounded-tl-xl rounded-tr-xl relative after:content-['_'] after:absolute after:bg-[gray] hover:after:bg-web-ascent-1 after:h-full after:w-5 after:bottom-0 after:-left-3 after:-skew-x-[22deg] after:skew-y-0 after:rounded-tl-xl before:content-['_'] before:absolute before:bg-[gray] hover:before:bg-web-ascent-1 before:h-full before:w-5 before:bottom-0 before:-right-3 before:skew-x-[22deg] before:skew-y-0 before:rounded-tr-xl hover:bg-web-ascent-1 cursor-pointer
+}
+
+.business-continuity-tab.active {
+    @apply bg-[#223f97] py-1 px-3 text-white font-semibold rounded-tl-xl rounded-tr-xl relative after:content-['_'] after:absolute after:bg-web-ascent-1 hover:after:bg-web-ascent-1 after:h-full after:w-5 after:bottom-0 after:-left-3 after:-skew-x-[22deg] after:skew-y-0 after:rounded-tl-xl before:content-['_'] before:absolute before:bg-web-ascent-1 hover:before:bg-web-ascent-1 before:h-full before:w-5 before:bottom-0 before:-right-3 before:skew-x-[22deg] before:skew-y-0 before:rounded-tr-xl hover:bg-web-ascent-1
+}
+
+.user-computing-tab {
+    @apply bg-[gray] py-1 px-3 text-white font-semibold rounded-tl-xl rounded-tr-xl relative after:content-['_'] after:absolute after:bg-[gray] hover:after:bg-web-ascent-1 after:h-full after:w-5 after:bottom-0 after:-left-3 after:-skew-x-[22deg] after:skew-y-0 after:rounded-tl-xl before:content-['_'] before:absolute before:bg-[gray] hover:before:bg-web-ascent-1 before:h-full before:w-5 before:bottom-0 before:-right-3 before:skew-x-[22deg] before:skew-y-0 before:rounded-tr-xl hover:bg-web-ascent-1 cursor-pointer
+}
+
+.user-computing-tab.active {
+    @apply bg-[#223f97] py-1 px-3 text-white font-semibold rounded-tl-xl rounded-tr-xl relative after:content-['_'] after:absolute after:bg-web-ascent-1 hover:after:bg-web-ascent-1 after:h-full after:w-5 after:bottom-0 after:-left-3 after:-skew-x-[22deg] after:skew-y-0 after:rounded-tl-xl before:content-['_'] before:absolute before:bg-web-ascent-1 hover:before:bg-web-ascent-1 before:h-full before:w-5 before:bottom-0 before:-right-3 before:skew-x-[22deg] before:skew-y-0 before:rounded-tr-xl hover:bg-web-ascent-1
+}
+
+.pricing-graph {
+    height: auto;
+    width: 100%;
+    position: relative;
+}
+
+.graph-axis-x {
+    height: 2px;
+    width: 100%;
+    background-color: black;
+    margin-left: -40px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.graph-axis-y {
+    height: auto;
+    width: 2px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column-reverse;
+    margin-bottom: -45px;
+}
+
+.graph-axis-y div {
+    position: relative;
+    margin-left: -50px;
+    text-align: left;
+    width: 20px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.graph-axis-y div.scale-count::after {
+    margin-right: -25px;
+    position: absolute;
+    content: " ";
+    top: 14px;
+    right: 0px;
+    height: 2px;
+    width: 20px;
+    background-color: black;
+}
+
+.graph-bar {
+    rotate: 90deg;
+    position: relative;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 475px;
+    height: 10px;
+    border-radius: 0px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 60px;
+    cursor: pointer;
+    background-color: #c5c0c0;
+    border: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    position: relative;
+    width: 10px;
+    height: 60px;
+    border-radius: 2px;
+    background-color: #223f97;
+}
+
+.industry-solution-box {
+    @apply cursor-pointer
+}
+
+.industry-solution-box>div {
+    @apply hover:bg-web-ascent-1 hover:bg-opacity-20
+}
+
+.industry-solution-box.active>div {
+    @apply bg-web-ascent-1 bg-opacity-20
+}
+
+.industry-solution-content-box {
+    display: none;
+}
+
+.key .swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    bottom: -5px;
+    position: relative;
+}
+
+
+/* Dashboard */
+.dashboard-sidebar {
+    @apply p-8 shadow-lg bg-white rounded-lg
+}
+
+.dashboard-sidebar ul {
+    @apply space-y-3
+}
+
+.dashboard-sidebar button {
+    @apply flex items-center justify-start whitespace-nowrap bg-web-ascent-1 bg-opacity-10 px-4 py-3 w-full text-sm hover:bg-web-ascent-1 transition duration-500 ease-in-out hover:ease-in-out hover:text-white rounded-md
+}
+
+.dashboard-sidebar button.active {
+    @apply bg-web-ascent-1-dark text-white
+}
+
+.dashboard-sidebar button svg {
+    @apply h-4 w-4 mr-2 stroke-[2px]
+}
+
+.content-body {
+    transform: scale(1);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    animation: hover 2s linear;
+}
+
+@keyframes hover {
+    0% {
+        transform: scale(0.8);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+.arr-icon1,
+.arr-icon2,
+.arr-icon3 {
+    transform: rotate(-180deg);
+    top: 10px;
+}
+
+#desktop-header {
+    box-shadow: 0 0 7px #80808080;
+}
+
+
+.button-next .arr1 {
+    transform: rotate(90deg);
+    left: -70px;
+    top: 190px;
+}
+
+.button-prev .arr2 {
+    transform: rotate(-90deg);
+    right: -60px;
+    top: -272px;
+}
+
+.location-card {
+    @apply relative h-fit overflow-visible flex items-center justify-center
+}
+
+.location-card .top-line {
+    @apply absolute h-[15px] bg-web-ascent-1 z-20 top-[-15px] lg:-right-8 md:-right-8
+}
+
+.location-card .bottom-line {
+    @apply absolute h-[15px] bg-web-ascent-1 z-20 bottom-[-15px] lg:-left-8 md:-left-8
+}
+
+.location-card .top-line {
+    width: 0%;
+    transition: 0.3s ease;
+}
+
+.location-card:hover .top-line {
+    width: 100%;
+    transition: 0.3s ease;
+}
+
+.location-card .bottom-line {
+    width: 0%;
+    transition: 0.3s ease;
+}
+
+.location-card:hover .bottom-line {
+    width: 100%;
+    transition: 0.3s ease;
+}
+
+.location-card .card-content {
+    @apply w-full overflow-clip relative z-10 transition duration-300 ease-in-out flex items-center justify-center
+}
+
+.location-card .card-content>div {
+    @apply w-full
+}
+
+.location-card .card-content {
+    height: 500px;
+    transition: 0.3s ease;
+}
+
+.location-card .location-info {
+    @apply absolute w-[400px] bottom-10 h-auto bg-white hidden z-20 shadow-xl border rounded-md
+}
+
+.location-card:hover .card-content {
+    height: 570px;
+    z-index: 10;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.9);
+    transition: 0.3s ease;
+}
+
+.location-card .info-button {
+    display: none;
+    transition: 0.3s ease;
+    transform-origin: center;
+}
+
+.location-card:hover .info-button {
+    display: flex;
+    transform-origin: center;
+    transition: 0.3s ease;
+}
+
+.location-card .info-button {
+    @apply absolute bottom-5 h-fit w-fit items-center justify-center
+}
+
+.location-card .info-button>div {
+    @apply h-16 w-16 bg-white rounded-full flex items-center justify-center shadow-lg
+}
+
+.location-card .info-button>div>span {
+    @apply font-bold text-5xl -mt-1 -mr-0.5 text-web-ascent-1
+}
+
+.location-card .text-div {
+    @apply p-5 h-full w-fit flex lg:flex-col md:flex-col sm:flex-row items-center justify-center text-2xl font-bold text-white text-center
+}
+
+.location-card>div>div {
+    @apply h-full bg-cover bg-right bg-no-repeat
+}
+
+.dailers .rs-handle {
+    background-color: transparent;
+    border: 8px solid transparent;
+    border-right-color: black;
+    margin: -6px 0px 0px 14px !important;
+    border-width: 6px 104px 6px 4px;
+}
+
+.dailers .rs-handle:before {
+    display: block;
+    content: " ";
+    position: absolute;
+    height: 22px;
+    width: 22px;
+    background: black;
+    right: -11px;
+    bottom: -11px;
+    border-radius: 100px;
+}
+
+.dailers .rs-tooltip {
+    top: 75%;
+    font-size: 1.1rem;
+}
+
+.dailers .rs-range-color {
+    @apply bg-web-ascent-1
+}
+
+.dailers .rs-path-color {
+    @apply bg-slate-200
+}
+
+.card-box {
+    border-right: 4px solid rgb(86, 86, 86);
+    box-shadow: 0 0 8px #8080804a;
+}
+
+.card-box:hover {
+    border-right: 4px solid #223f97;
+}
+
+#managed-services {
+    /* scroll-margin-top: 100px; */
+    scroll-margin-top: 180px;
+}
+
+.mobile-header-nav-list li {
+    @apply w-full
+}
+
+.mobile-header-nav-list .mobile-nav-item {
+    color: #000;
+    position: relative;
+}
+
+.mobile-header-nav-list .arrow::after {
+    content: "\2B9D";
+    position: relative;
+    font-size: 20px;
+    font-weight: 700;
+    float: right;
+    transform: rotate(180deg);
+    transition: all .5s linear;
+}
+
+.mobile-header-nav-list .mobile-nav-item {
+    font-size: 22px;
+    line-height: 2.2rem;
+}
+
+.mob-drop li a {
+    font-size: 20px;
+    font-weight: 400;
+    color: #223f97;
+}
+
+.mob-drop li {
+    padding: 2px 0;
+}
+
+.down-arrow-click {
+    transform: rotate(-180deg);
+}
+
+.mob-drop {
+    /* box-shadow: 0 0 3px #8080804d; */
+    padding: 10px;
+    /* border-radius: 15px; */
+    width: 100%;
+}
+
+.list-points li {
+    box-shadow: 5px -5px 5px #223f9726;
+}
+
+.list-points li:hover {
+    box-shadow: -5px 5px 5px #223f9726;
+    /* box-shadow: rgba(0, 0, 0, 0.17) 1px -2px 11px 0px inset, #223f9726 1px 1px 10px 0px inset, #223f9726 1px -1px 0px 0px inset, rgba(0, 0, 0, 0.06) 0px 0px 0px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 0px 0px, rgba(0, 0, 0, 0.09) 2px 2px 0px; */
+    border: none;
+}
+
+.whitepapers {
+    box-shadow: 2px 3px 4px #0000008f, inset 2px 0 5px #00000080;
+}
+
+.popup-overlay {
+    display: none;
+}
+
+.popup-overlay {
+    @apply overflow-y-scroll
+}
+
+.popup-overlay::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width:599px) {
+    .button-next .arr1 {
+        left: -20px;
+        top: 135px;
+    }
+
+    .button-prev .arr2 {
+        right: -20px;
+        top: -195px;
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .button-next .arr1 {
+        left: -30px;
+        top: 190px;
+    }
+
+    .button-prev .arr2 {
+        right: -30px;
+        top: -300px;
+    }
+}
+
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+    right: auto;
+    left: 5rem;
+}
+
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+    right: 5rem;
+    left: auto;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    text-align: center;
+    padding: 7px;
+    background: #223f97;
+    color: #fff;
+    box-shadow: 1px 2px 4px grey;
+}
+
+.next-btn {
+    right: 1rem !important;
+}
+
+.prev-btn {
+    left: 1rem;
+}
+
+.box-gradient {
+    box-shadow: none;
+    transition: all 0.5s linear;
+    background: #9e9e9e0f;
+}
+
+.box-gradient:hover {
+    box-shadow: 2px 3px 4px grey;
+    transform: translateY(-20px);
+    background: none;
+}
+
+.box-gradient span::after {
+    position: absolute;
+    content: "";
+    transition: all 1s linear;
+}
+
+.one::after {
+    background-color: #223f97;
+    width: 10%;
+    height: 1.5%;
+    top: 0;
+    left: 0;
+}
+
+.two::after {
+    background-color: #223f97;
+    width: 1.5%;
+    height: 10%;
+    right: 0;
+    bottom: 0;
+}
+
+.three::after {
+    background-color: #223f97;
+    width: 1.5%;
+    height: 10%;
+    left: 0;
+    top: 0;
+}
+
+.four::after {
+    background-color: #223f97;
+    width: 10%;
+    height: 1.5%;
+    bottom: 0;
+    right: 0;
+}
+
+.box-gradient:hover .one::after {
+    background-color: #223f97;
+    width: 100%;
+    height: 1.5%;
+}
+
+.box-gradient:hover .two::after {
+    background-color: #223f97;
+    width: 1.5%;
+    height: 100%;
+}
+
+.box-gradient:hover .three::after {
+    background-color: #223f97;
+    width: 1.5%;
+    height: 100%;
+}
+
+.box-gradient:hover .four::after {
+    background-color: #223f97;
+    width: 100%;
+    height: 1.5%;
+}
+
+
+.manage2 {
+    flex: 0 0 calc(40% - 100px);
+}
+
+.anim-services div:hover img {
+    animation: Shake 0.5s linear infinite;
+}
+
+.flip-box {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px;
+}
+
+.flip-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-box:hover .flip-box-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-box-front,
+.flip-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    backface-visibility: hidden;
+    left: 0;
+}
+
+.flip-box-front {
+    padding: 1rem;
+    color: black;
+}
+
+.flip-box-back {
+    color: white;
+    transform: rotateY(180deg);
+    text-align: left;
+}
+
+#desktop-header.active #main-menu {
+    background-color: #000;
+}
+
+@media (max-width:992px) {
+    .manage2 {
+        flex: 0 0 calc(41% - 90px);
+    }
+}
+
+
+@media (min-width:1200) and (max-width:1300px) {
+    .conts {
+        padding-top: 3rem;
+    }
+}
+
+@media (min-width:1700px) and (max-width:1800px) {
+    .conts {
+        padding-top: 3.5rem;
+    }
+}
+
+@media (min-width:1800px) and (max-width:1920px) {
+    .conts {
+        padding-top: 6.5rem;
+    }
+
+    .conts p {
+        font-size: 16px;
+    }
+}
+
+@media (min-width:1024) and (max-width:1300px) {
+    .conts {
+        padding-top: 1rem;
+    }
+}
+
+.sec-l-bg::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(4, 9, 30, 0.95) 12%, rgba(4, 9, 30, 0.2) 60%);
+    top: 0;
+    left: 0;
+}
+
+.sec-l-bg .conts {
+    z-index: 1;
+}
+
+@media (max-width:599px) {
+    .sec-l-bg::after {
+        background: linear-gradient(rgb(4 9 30 / 70%) 12%, rgb(4 9 30 / 61%) 60%);
+    }
+}
